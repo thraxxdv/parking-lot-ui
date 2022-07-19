@@ -1,6 +1,5 @@
 import Head from "next/head";
 import Image from "next/image";
-import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 export default function Home() {
   return (
@@ -12,6 +11,7 @@ export default function Home() {
       </Head>
 
       <main>
+        <button className="btn btn-primary">Haha</button>
         <h1>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
