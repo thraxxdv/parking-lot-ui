@@ -12,8 +12,8 @@ interface Props {
 
 function VehicleHeader({vehicleId, isOccupied, leftOn, parkedOn} : Props) : Element<'div'> {
   return (
-    <div className="bg-orange p-2 my-2">
-      <p className="text-center mb-0 text-white">Vehicle 1234</p>
+    <div className={`${isOccupied ? 'bg-red' : 'bg-primary'} py-2 my-2`}>
+      <p className="text-center mb-0 text-white">{vehicleId ? vehicleId : '---'}</p>
     </div>
   );
 }
