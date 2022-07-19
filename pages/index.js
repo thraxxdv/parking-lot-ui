@@ -11,7 +11,7 @@ export default function Home() : Element<'main'> {
     <main className="container-fluid min-vh-100 bg-gray-200 py-5">
       <div className="container py-1">
         <div className="row">
-          <div className="col-lg-3">
+          <div className="col-12">
             <Legend />
           </div>
         </div>

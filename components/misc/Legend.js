@@ -7,7 +7,7 @@ import React from "react";
 
 function Legend(): Element<"div"> {
   return (
-    <div>
+    <div className="d-flex">
       <LegendItem color="blue" label="Gate" />
       <LegendItem color="gray-300" label="Parking Space" />
       <LegendItem color="primary" label="Available" />
