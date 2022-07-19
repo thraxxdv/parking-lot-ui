@@ -6,6 +6,7 @@ import GateHeader from "./GateHeader";
 import SpaceHeader from "./SpaceHeader";
 import WhiteHeaderPlaceholder from "./WhiteHeaderPlaceholder";
 import VehicleHeader from "./VehicleHeader";
+import Timestamps from "./Timestamps";
 
 interface Props {
   parkingData: Object;
@@ -36,6 +37,8 @@ function ParkingSpaceItem({ parkingData }: Props): Element<"div"> {
             parkedOn={parkingData.parked_on}
           />
         }
+
+        <Timestamps leftOn={parkingData.left_on} parkedOn={parkingData.parked_on} />
         
       </div>
     </div>
