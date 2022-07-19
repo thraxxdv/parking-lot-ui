@@ -4,7 +4,7 @@ import ParkingSpaceItem from "../components/parking_space/ParkingSpaceItem";
 
 export default function Home() {
   return (
-    <main className="container-fluid min-vh-100 bg-gray-100 py-5">
+    <main className="container-fluid min-vh-100 bg-gray-200 py-5">
       <div className="container py-1">
         <div className="row">
           <ParkingSpaceItem />
