@@ -5,6 +5,7 @@ import ParkingSpaceContainer from "../components/parking_space/ParkingSpaceConta
 
 import React from "react"
 import Legend from "../components/misc/Legend";
+import VehicleParking from "../components/forms/VehicleParking";
 
 export default function Home() : Element<'main'> {
   return (
@@ -13,6 +14,9 @@ export default function Home() : Element<'main'> {
         <div className="row">
           <div className="col-12">
             <Legend />
+          </div>
+          <div className="col-12">
+            <VehicleParking />
           </div>
         </div>
         <ParkingSpaceContainer />
