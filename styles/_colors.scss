@@ -1,2 +1,85 @@
+/* ---------------------------------- Grays --------------------------------- */
+$white: #fff;
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #6c757d;
+$gray-700: #434244;
+$gray-800: #343a40;
+$gray-900: #111111;
+$black: #000;
+
+/* --------------------------------- Colors --------------------------------- */
+$blue: #0d6efd;
+$indigo: #6610f2;
+$purple: #6f42c1;
+$pink: #d63384;
+$red: #dc3545;
+$orange: #fd7e14;
+$yellow: #ffc107;
+$green: #198754;
+$teal: #20c997;
+$cyan: #90d5e7;
+
+/* ------------------------------ Theme colors ------------------------------ */
 $primary: #36B47F;
 $secondary: #6A71CF;
+$success: $green;
+$info: $cyan;
+$warning: $yellow;
+$danger: $red;
+$light: $gray-100;
+$dark: $gray-900;
+
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "success": $success,
+  "info": $info,
+  "warning": $warning,
+  "danger": $danger,
+  "light": $light,
+  "dark": $dark,
+);
+
+/* ------------------------------ Custom colors ----------------------------- */
+$custom-theme-colors: ();
+
+/* ---- Append all bootstrap colors to theme colors for util registration --- */
+$append-bootstrap-colors: (
+  "white": $white,
+  "gray-100": $gray-100,
+  "gray-200": $gray-200,
+  "gray-300": $gray-300,
+  "gray-400": $gray-400,
+  "gray-500": $gray-500,
+  "gray-600": $gray-600,
+  "gray-700": $gray-700,
+  "gray-800": $gray-800,
+  "gray-900": $gray-900,
+  "black": $black,
+  "blue": $blue,
+  "indigo": $indigo,
+  "purple": $purple,
+  "pink": $pink,
+  "red": $red,
+  "orange": $orange,
+  "yellow": $yellow,
+  "green": $green,
+  "teal": $teal,
+  "cyan": $cyan,
+);
+
+$theme-colors: map-merge($theme-colors, $append-bootstrap-colors);
+$theme-colors: map-merge($custom-theme-colors, $theme-colors);
+$theme-colors-rgb: map-loop($theme-colors, to-rgb, "$value");
+$utilities-colors: map-merge($utilities-colors, $theme-colors-rgb);
+$utilities-text-colors: map-loop(
+  $utilities-colors,
+  rgba-css-var,
+  "$key",
+  "text"
+);
+$utilities-bg-colors: map-loop($utilities-colors, rgba-css-var, "$key", "bg");
