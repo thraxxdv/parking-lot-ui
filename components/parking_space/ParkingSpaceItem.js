@@ -2,24 +2,25 @@
 import type { Element } from "react";
 
 import React from "react";
+import GateHeader from "./GateHeader";
+import SpaceHeader from "./SpaceHeader";
+import WhiteHeaderPlaceholder from "./WhiteHeaderPlaceholder";
+import VehicleHeader from "./VehicleHeader";
 
 interface Props {
-  parkingData: Array<Object>
+  parkingData: Object
 }
 
 function ParkingSpaceItem({parkingData} : Props): Element<"div"> {
   return (
     <div className="col-lg-3">
       <div className="bg-white p-3 my-3">
-        <div className="bg-blue p-2 my-2">
-          <p className="text-center mb-0 text-uppercase fw-bold text-white">Gate #1</p>
-        </div>
-        <div className="bg-gray-500 p-2 my-2">
-          <p className="text-center mb-0 fw-bold text-uppercase">Space #1</p>
-        </div>
-        <div className="bg-orange p-2 my-2">
-          <p className="text-center mb-0 text-white">Vehicle 1234</p>
-        </div>
+
+        {parkingData.gate ? <GateHeader gateNumber={parkingData.gate.id} /> : <WhiteHeaderPlaceholder />}
+
+        {<SpaceHeader spaceId={parkingData.id}/>}
+
+        {<VehicleHeader vehicleId={parkingData.vehicle_id} isOccupied={parkingData.is_occupied} leftOn={parkingData.left_on} parkedOn={parkingData.parked_on}/>}
         
         <div>
             <button className="btn btn-secondary text-white d-block mx-auto">Unpark</button>
