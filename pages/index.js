@@ -7,6 +7,7 @@ import React from "react";
 import Legend from "../components/misc/Legend";
 import VehicleParking from "../components/forms/VehicleParking";
 import VehicleUnparking from "../components/forms/VehicleUnparking";
+import AddRemoveGate from "../components/forms/AddRemoveGate";
 
 export default function Home(): Element<"main"> {
   return (
@@ -19,6 +20,7 @@ export default function Home(): Element<"main"> {
           <div className="col-12">
             <VehicleParking />
             <VehicleUnparking />
+            <AddRemoveGate />
           </div>
         </div>
         <ParkingSpaceContainer />
