@@ -3,6 +3,8 @@ import type { Element } from "react";
 
 import { parkVehicle } from "../../api/parking_space";
 
+import { getVehicleTypes } from "../../api/vehicle_type";
+
 import React from "react";
 import { useEffect, useState } from "react";
 
@@ -30,7 +32,11 @@ function VehicleParking(): Element<"form"> {
       .catch((e) => console.log(e));
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    getVehicleTypes()
+      .then((r) => setTypes(r.data))
+      .catch((e) => console.log(e));
+  }, []);
 
   return (
     <form className="d-flex my-3" onSubmit={handleSubmit}>
@@ -52,8 +58,14 @@ function VehicleParking(): Element<"form"> {
         onChange={(e) => setSelectedType(e.target.value)}
         defaultValue={0}
       >
-        <option value="0" selected disabled hidden>Select Vehicle Type...</option>
-        <option value="2">test vehicle type</option>
+        <option value="0" selected disabled hidden>
+          Select Vehicle Type...
+        </option>
+        {types.map((obj) => (
+          <option value={obj.id} key={obj.id}>
+            {obj.type}
+          </option>
+        ))}
       </select>
       <input
         type="text"
