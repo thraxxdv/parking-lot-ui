@@ -35,11 +35,14 @@ function ParkingSpaceItem({ parkingData }: Props): Element<"div"> {
             isOccupied={parkingData.is_occupied}
             leftOn={parkingData.left_on}
             parkedOn={parkingData.parked_on}
+            occupyingVehicleType={parkingData.occupying_vehicle_type?.type}
           />
         }
 
-        <Timestamps leftOn={parkingData.left_on} parkedOn={parkingData.parked_on} />
-        
+        <Timestamps
+          leftOn={parkingData.left_on}
+          parkedOn={parkingData.parked_on}
+        />
       </div>
     </div>
   );
