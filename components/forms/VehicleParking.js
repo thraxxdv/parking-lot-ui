@@ -1,6 +1,7 @@
 // @flow
 import type { Element } from "react";
 
+import { getGates } from "../../api/gate";
 import { parkVehicle } from "../../api/parking_space";
 
 import { getVehicleTypes } from "../../api/vehicle_type";
@@ -36,6 +37,10 @@ function VehicleParking(): Element<"form"> {
     getVehicleTypes()
       .then((r) => setTypes(r.data))
       .catch((e) => console.log(e));
+
+    getGates()
+      .then((r) => setGates(r.data))
+      .catch((e) => console.log(e));
   }, []);
 
   return (
@@ -47,9 +52,14 @@ function VehicleParking(): Element<"form"> {
         onChange={(e) => setSelectedGate(e.target.value)}
         defaultValue={0}
       >
-        <option value="0" selected disabled hidden>
+        <option value="0" disabled hidden>
           Select Gate...
         </option>
+        {gates.map((obj) => (
+          <option value={obj.id} key={obj.id}>
+            Gate #{obj.id}
+          </option>
+        ))}
       </select>
       <select
         name="vehicle-type"
@@ -58,7 +68,7 @@ function VehicleParking(): Element<"form"> {
         onChange={(e) => setSelectedType(e.target.value)}
         defaultValue={0}
       >
-        <option value="0" selected disabled hidden>
+        <option value="0" disabled hidden>
           Select Vehicle Type...
         </option>
         {types.map((obj) => (
