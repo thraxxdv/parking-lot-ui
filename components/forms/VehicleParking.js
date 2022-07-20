@@ -58,7 +58,7 @@ function VehicleParking(): Element<"form"> {
   }, []);
 
   return (
-    <form className="d-flex my-3" onSubmit={handleSubmit}>
+    <form className="d-flex my-3 bg-gray-500 p-2" onSubmit={handleSubmit}>
       <ToastContainer />
       <select
         name="gate"

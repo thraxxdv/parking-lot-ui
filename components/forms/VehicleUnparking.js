@@ -9,7 +9,7 @@ function VehicleUnparking(): Element<"form"> {
   const [vehicleId, setVehicleId] = useState("");
   const [timestamp, setTimestamp] = useState("");
   return (
-    <form className="d-flex my-3">
+    <form className="d-flex my-3 bg-gray-500 p-2">
       <ToastContainer />
       <input
         type="text"
