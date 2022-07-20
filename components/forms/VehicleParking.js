@@ -9,6 +9,7 @@ import { getVehicleTypes } from "../../api/vehicle_type";
 import React from "react";
 import { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
+import LaravelValidationParser from "../../utils/LaravelValidationParser";
 
 function VehicleParking(): Element<"form"> {
   // Data
@@ -35,7 +36,10 @@ function VehicleParking(): Element<"form"> {
           type: "success",
         })
       )
-      .catch((e) => console.log(e));
+      .catch((e) => {
+        console.log(e.response.data.errors.uuid);
+        console.log(LaravelValidationParser(e.response.data.errors));
+      });
   };
 
   useEffect(() => {
