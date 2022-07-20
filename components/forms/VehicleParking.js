@@ -10,6 +10,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import LaravelValidationParser from "../../utils/LaravelValidationParser";
+import HttpErrorHandler from "../../utils/HttpErrorHandler";
 
 function VehicleParking(): Element<"form"> {
   // Data
@@ -37,8 +38,12 @@ function VehicleParking(): Element<"form"> {
         })
       )
       .catch((e) => {
-        console.log(e.response.data.errors.uuid);
-        console.log(LaravelValidationParser(e.response.data.errors));
+        HttpErrorHandler(e, () => {
+          let errors = LaravelValidationParser(e.response.data.errors);
+          errors.forEach((error) => {
+            toast(error, { type: "error" });
+          });
+        });
       });
   };
 
