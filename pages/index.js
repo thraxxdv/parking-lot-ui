@@ -8,6 +8,7 @@ import Legend from "../components/misc/Legend";
 import VehicleParking from "../components/forms/VehicleParking";
 import VehicleUnparking from "../components/forms/VehicleUnparking";
 import AddRemoveGate from "../components/forms/AddRemoveGate";
+import AddParkingSpace from "../components/parking_space/AddParkingSpace";
 
 export default function Home(): Element<"main"> {
   return (
@@ -20,7 +21,10 @@ export default function Home(): Element<"main"> {
           <div className="col-12">
             <VehicleParking />
             <VehicleUnparking />
-            <AddRemoveGate />
+            <div className="d-flex justify-content-between align-items-center">
+              <AddRemoveGate />
+              <AddParkingSpace />
+            </div>
           </div>
         </div>
         <ParkingSpaceContainer />

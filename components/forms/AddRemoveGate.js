@@ -9,7 +9,7 @@ function AddRemoveGate(): Element<"form"> {
   const [gate, setGate] = useState("");
 
   return (
-    <form className="d-flex my-3 bg-gray-500 p-2">
+    <form className="d-flex my-1 bg-gray-500 p-2 flex-grow-1 me-3">
       <ToastContainer />
       <input
         type="text"
