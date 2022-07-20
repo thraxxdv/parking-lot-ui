@@ -107,6 +107,7 @@ function VehicleParking(): Element<"form"> {
         id="parked-on"
         className="form-control me-3"
         onChange={(e) => setTimestamp(e.target.value)}
+        value={timestamp}
       />
       <button className="btn btn-primary w-50 text-white fw-bold">
         Park Vehicle
