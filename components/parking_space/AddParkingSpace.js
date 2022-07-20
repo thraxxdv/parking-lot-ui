@@ -1,18 +1,37 @@
 // @flow
 import type { Element } from "react";
 
+import { createParkingSpace } from "../../api/parking_space";
+
 import React from "react";
 import { useState } from "react";
+import { toast } from "react-toastify";
+import HttpErrorHandler from "../../utils/HttpErrorHandler";
+import LaravelValidationParser from "../../utils/LaravelValidationParser";
 
 interface Props {
   vehicleTypes: Array<Object>;
 }
 
 function AddParkingSpace({ vehicleTypes }: Props): Element<"form"> {
-  const [selectedType, setSelectedType] = useState("");
+  const [selectedType, setSelectedType] = useState(0);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    createParkingSpace(selectedType)
+      .then((r) =>
+        toast("Parking spaced added successfuly", {
+          type: "success",
+        })
+      )
+      .catch((e) => {
+        HttpErrorHandler(e, () => {
+          let errors = LaravelValidationParser(e.response.data.errors);
+          errors.forEach((error) => {
+            toast(error, { type: "error" });
+          });
+        });
+      });
   };
 
   return (
