@@ -3,11 +3,12 @@ import type { Element } from "react";
 
 import ParkingSpaceContainer from "../components/parking_space/ParkingSpaceContainer";
 
-import React from "react"
+import React from "react";
 import Legend from "../components/misc/Legend";
 import VehicleParking from "../components/forms/VehicleParking";
+import VehicleUnparking from "../components/forms/VehicleUnparking";
 
-export default function Home() : Element<'main'> {
+export default function Home(): Element<"main"> {
   return (
     <main className="container-fluid min-vh-100 bg-gray-200 py-5">
       <div className="container py-1">
@@ -17,6 +18,7 @@ export default function Home() : Element<'main'> {
           </div>
           <div className="col-12">
             <VehicleParking />
+            <VehicleUnparking />
           </div>
         </div>
         <ParkingSpaceContainer />

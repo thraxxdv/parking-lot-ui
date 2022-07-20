@@ -99,6 +99,7 @@ function VehicleParking(): Element<"form"> {
         name="vehicle-id"
         value={vehicleId}
         onChange={(e) => setVehicleId(e.target.value)}
+        placeholder="Vehicle ID"
       />
       <input
         type="datetime-local"
