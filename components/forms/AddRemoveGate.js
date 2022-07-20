@@ -13,7 +13,7 @@ function AddRemoveGate(): Element<"form"> {
       <ToastContainer />
       <input
         type="text"
-        className="form-control me-3 w-25"
+        className="form-control me-3 flex-grow-1"
         id="gate"
         name="gate"
         value={gate}
@@ -21,10 +21,13 @@ function AddRemoveGate(): Element<"form"> {
         placeholder="Place Gate Near"
       />
 
-      <button className="btn btn-primary text-white fw-bold me-3" type="button">
+      <button
+        className="btn btn-primary text-white fw-bold me-3 w-50"
+        type="button"
+      >
         Add Gate
       </button>
-      <button className="btn btn-red text-white fw-bold" type="button">
+      <button className="btn btn-red text-white fw-bold w-50" type="button">
         Remove Gate
       </button>
     </form>
