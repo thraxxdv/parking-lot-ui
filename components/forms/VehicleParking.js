@@ -30,7 +30,11 @@ function VehicleParking(): Element<"form"> {
       timestamp,
       vehicleId
     )
-      .then((r) => console.log(r))
+      .then((r) =>
+        toast("Vehicle parked", {
+          type: "success",
+        })
+      )
       .catch((e) => console.log(e));
   };
 
