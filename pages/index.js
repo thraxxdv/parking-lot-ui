@@ -29,11 +29,11 @@ export default function Home(): Element<"main"> {
             <Legend />
           </div>
           <div className="col-12">
-            <VehicleParking />
+            <VehicleParking vehicleTypes={types} />
             <VehicleUnparking />
             <div className="d-flex justify-content-between align-items-center">
               <AddRemoveGate />
-              <AddParkingSpace />
+              <AddParkingSpace vehicleTypes={types} />
             </div>
           </div>
         </div>

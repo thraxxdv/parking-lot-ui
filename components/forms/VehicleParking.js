@@ -12,10 +12,13 @@ import { toast, ToastContainer } from "react-toastify";
 import LaravelValidationParser from "../../utils/LaravelValidationParser";
 import HttpErrorHandler from "../../utils/HttpErrorHandler";
 
-function VehicleParking(): Element<"form"> {
+interface Props {
+  vehicleTypes: Array<Object>;
+}
+
+function VehicleParking({ vehicleTypes }: Props): Element<"form"> {
   // Data
   const [gates, setGates] = useState([]);
-  const [types, setTypes] = useState([]);
 
   // For inputs
   const [selectedGate, setSelectedGate] = useState("");
@@ -86,7 +89,7 @@ function VehicleParking(): Element<"form"> {
         <option value="0" disabled hidden>
           Select Vehicle Type...
         </option>
-        {types.map((obj) => (
+        {vehicleTypes.map((obj) => (
           <option value={obj.id} key={obj.id}>
             {obj.type}
           </option>
