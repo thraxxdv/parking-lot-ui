@@ -9,7 +9,7 @@ export const getParkingSpaces = () : Promise<Object> => {
 }
 
 export const parkVehicle = (gate: number, type: number, timestamp: string, uuid: string = '') : Promise<Object> => {
-    return axios.post(`${API_URL}/v1/parking/spaces`, {
+    return axios.put(`${API_URL}/v1/parking/park`, {
         gate: gate,
         vehicle_type_id: type,
         timestamp: timestamp,
