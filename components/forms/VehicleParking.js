@@ -1,11 +1,7 @@
 // @flow
 import type { Element } from "react";
-
 import { getGates } from "../../api/gate";
 import { parkVehicle } from "../../api/parking_space";
-
-import { getVehicleTypes } from "../../api/vehicle_type";
-
 import React from "react";
 import { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
@@ -51,10 +47,6 @@ function VehicleParking({ vehicleTypes }: Props): Element<"form"> {
   };
 
   useEffect(() => {
-    getVehicleTypes()
-      .then((r) => setTypes(r.data))
-      .catch((e) => console.log(e));
-
     getGates()
       .then((r) => setGates(r.data))
       .catch((e) => console.log(e));
