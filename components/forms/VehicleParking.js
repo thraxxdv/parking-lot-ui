@@ -8,6 +8,7 @@ import { getVehicleTypes } from "../../api/vehicle_type";
 
 import React from "react";
 import { useEffect, useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
 
 function VehicleParking(): Element<"form"> {
   // Data
@@ -45,6 +46,7 @@ function VehicleParking(): Element<"form"> {
 
   return (
     <form className="d-flex my-3" onSubmit={handleSubmit}>
+      <ToastContainer />
       <select
         name="gate"
         id="gate"
