@@ -5,6 +5,8 @@ import React from "react";
 import { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import { createGate, deleteGate } from "../../api/gate";
+import HttpErrorHandler from "../../utils/HttpErrorHandler";
+import LaravelValidationParser from "../../utils/LaravelValidationParser";
 
 function AddRemoveGate(): Element<"form"> {
   const [nearestSpace, setNearestSpace] = useState("");
@@ -19,7 +21,14 @@ function AddRemoveGate(): Element<"form"> {
           type: isDelete ? "info" : "success",
         });
       })
-      .catch((e) => console.log(e));
+      .catch((e) =>
+        HttpErrorHandler(e, () => {
+          let errors = LaravelValidationParser(e.response.data.errors);
+          errors.forEach((error) => {
+            toast(error, { type: "error" });
+          });
+        })
+      );
   };
 
   return (
