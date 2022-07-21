@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import LaravelValidationParser from "../../utils/LaravelValidationParser";
 import HttpErrorHandler from "../../utils/HttpErrorHandler";
+import { makeEchoInstance } from "../../api/constants";
 
 interface Props {
   vehicleTypes: Array<Object>;
@@ -50,6 +51,12 @@ function VehicleParking({ vehicleTypes }: Props): Element<"form"> {
     getGates()
       .then((r) => setGates(r.data))
       .catch((e) => console.log(e));
+
+    let echo = makeEchoInstance();
+
+    echo.channel("gates-updated").listen(".gates-updated", (e) => {
+      setGates(e.gates);
+    });
   }, []);
 
   return (
