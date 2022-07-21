@@ -15,8 +15,7 @@ function ParkingSpaceContainer(): Element<"div"> {
       .catch((e) => console.log(e));
     let echo = makeEchoInstance();
     echo.channel("parking-spaces").listen(".parking-spaces-updated", (e) => {
-      console.log(e.parkingSpaces);
-      setParkingSpaces(e.parkingSpaces);
+      setParkingSpaces(e.parking_spaces);
     });
   }, []);
 
